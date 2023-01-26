@@ -41,9 +41,10 @@ func SetIndentEncoder() {
 
 // A log entry.
 type Entry struct {
-	Line    string         `json:"line,omitempty"`
-	Message string         `json:"message"`
-	Tags    map[string]any `json:"tags,omitempty"`
+	Severity string         `json:"severity"`
+	Line     string         `json:"line,omitempty"`
+	Message  string         `json:"message"`
+	Tags     map[string]any `json:"tags,omitempty"`
 }
 
 // New returns a log with the given description that can be tagged.
@@ -56,7 +57,31 @@ func Newf(msgFormat string, v ...any) Entry {
 	return makeEntry(msgFormat, v...)
 }
 
-func makeEntry(msgFormat string, v ...any) Entry {
+func Debug(v string) Entry {
+
+}
+
+func Debugf(v string) Entry {
+
+}
+
+func Info(v string) Entry {
+
+}
+
+func Infof(v string) Entry {
+
+}
+
+func Warn(v string) Entry {
+
+}
+
+func Warnf(v string) Entry {
+
+}
+
+func makeEntry(severity string, msgFormat string, v ...any) Entry {
 	_, filename, line, _ := runtime.Caller(2)
 
 	return Entry{
