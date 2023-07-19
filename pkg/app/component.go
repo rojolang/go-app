@@ -419,6 +419,7 @@ func (c *Compo) replaceRoot(v UI) error {
 		}
 		fmt.Println("replaceRoot(): fetching parent", reflect.TypeOf(parent))
 	}
+	fmt.Println("replaceRoot(): parent found", reflect.TypeOf(parent))
 
 	if parent == nil {
 		return errors.New("replacing component root failed").
