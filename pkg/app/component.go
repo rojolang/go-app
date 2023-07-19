@@ -417,7 +417,7 @@ func (c *Compo) replaceRoot(v UI) error {
 		if parent == nil || parent.Kind() == HTML {
 			break
 		}
-		fmt.Println("replaceRoot(): fetching parent")
+		fmt.Println("replaceRoot(): fetching parent", parent.Kind())
 	}
 
 	if parent == nil {
