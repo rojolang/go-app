@@ -267,8 +267,6 @@ func (c *Compo) getParent() UI {
 }
 
 func (c *Compo) setParent(p UI) {
-	fmt.Printf("compo.setParent(%T, %T)\n", c.self(), p)
-
 	c.parentElem = p
 }
 
@@ -298,6 +296,8 @@ func (c *Compo) mount(d Dispatcher) error {
 			WithTag("kind", c.Kind()).
 			Wrap(err)
 	}
+
+	fmt.Printf("%T.setParent(%T)\n", root, c.this)
 	root.setParent(c.this)
 	c.root = root
 
@@ -432,6 +432,7 @@ func (c *Compo) replaceRoot(v UI) error {
 			WithTag("reason", "coponent does not have html element parents")
 	}
 
+	fmt.Printf("%T.setParent(%T)\n", new, c.self())
 	new.setParent(c.self())
 	c.root = new
 
