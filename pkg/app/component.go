@@ -267,6 +267,8 @@ func (c *Compo) getParent() UI {
 }
 
 func (c *Compo) setParent(p UI) {
+	fmt.Printf("compo.setParent(%T, %T)\n", c.self(), p)
+
 	c.parentElem = p
 }
 
