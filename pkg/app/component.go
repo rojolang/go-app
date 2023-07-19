@@ -432,8 +432,8 @@ func (c *Compo) replaceRoot(v UI) error {
 			WithTag("reason", "coponent does not have html element parents")
 	}
 
-	c.root = new
 	new.setParent(c.self())
+	c.root = new
 
 	oldjs := old.JSValue()
 	newjs := v.JSValue()
