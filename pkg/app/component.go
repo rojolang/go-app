@@ -402,6 +402,8 @@ func (c *Compo) replaceRoot(v UI) error {
 	old := c.root
 	new := v
 
+	fmt.Printf("replaceRoot old parent: %T compo: %T\n", old.getParent(), c.self())
+
 	if err := mount(c.getDispatcher(), new); err != nil {
 		return errors.New("replacing component root failed").
 			WithTag("kind", c.Kind()).
