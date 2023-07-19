@@ -402,8 +402,6 @@ func (c *Compo) replaceRoot(v UI) error {
 	old := c.root
 	new := v
 
-	fmt.Printf("replaceRoot old parent: %T compo: %T\n", old.getParent(), c.self())
-
 	if err := mount(c.getDispatcher(), new); err != nil {
 		return errors.New("replacing component root failed").
 			WithTag("kind", c.Kind()).
@@ -415,12 +413,10 @@ func (c *Compo) replaceRoot(v UI) error {
 			Wrap(err)
 	}
 
+	fmt.Printf("%T.replaceRoot(%T)\n", c.self(), new)
+
 	var parent UI
-	for {
-		parent = c.getParent()
-		if parent == nil || parent.Kind() == HTML {
-			break
-		}
+	for parent = c.getParent(); parent != nil && parent.Kind() != HTML; parent = parent.getParent() {
 		fmt.Println("replaceRoot(): fetching parent", reflect.TypeOf(parent))
 	}
 	fmt.Println("replaceRoot(): parent found", reflect.TypeOf(parent))
