@@ -2,6 +2,7 @@ package app
 
 import (
 	"context"
+	"fmt"
 	"io"
 	"reflect"
 	"strings"
@@ -416,6 +417,7 @@ func (c *Compo) replaceRoot(v UI) error {
 		if parent == nil || parent.Kind() == HTML {
 			break
 		}
+		fmt.Println("replaceRoot(): fetching parent")
 	}
 
 	if parent == nil {
