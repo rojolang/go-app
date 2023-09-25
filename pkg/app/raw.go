@@ -147,6 +147,10 @@ func (r *raw) htmlWithIndent(w io.Writer, indent int) {
 	w.Write([]byte(r.value))
 }
 
+func (r *raw) descriptor() elementDescriptor {
+	return elementDescriptor{}
+}
+
 func rawRootTagName(raw string) string {
 	raw = strings.TrimSpace(raw)
 

@@ -166,3 +166,7 @@ func (c condition) html(w io.Writer) {
 func (c condition) htmlWithIndent(w io.Writer, indent int) {
 	panic("shoulnd not be called")
 }
+
+func (c condition) descriptor() elementDescriptor {
+	return elementDescriptor{}
+}

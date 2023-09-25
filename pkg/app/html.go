@@ -394,3 +394,7 @@ func (e *htmlElement) writeHTMLAttribute(w io.Writer, k, v string) {
 		})))
 	}
 }
+
+func (e *htmlElement) descriptor() elementDescriptor {
+	return elementDescriptor{}
+}
