@@ -32,12 +32,6 @@ func (s *elementStore) Mount(v UI) error {
 			WithTag("id", descriptor.ID).
 			WithTag("depth", descriptor.Depth)
 	}
-	if IsClient && descriptor.JSElement == nil {
-		return errors.New("descriptor js element is not set").
-			WithTag("id", descriptor.ID).
-			WithTag("depth", descriptor.Depth).
-			WithTag("js-element", descriptor)
-	}
 	if _, ok := s.elements[descriptor.ID]; ok {
 		return errors.New("ui element is already mounted").
 			WithTag("id", descriptor.ID).
@@ -56,6 +50,11 @@ func (s *elementStore) Mount(v UI) error {
 func (s *elementStore) Mounted(v UI) bool {
 	_, mounted := s.elements[v.descriptor().ID]
 	return mounted
+}
+
+// Dismount removes a UI element from the store.
+func (s *elementStore) Dismount(v UI) {
+	delete(s.elements, v.descriptor().ID)
 }
 
 // Update attempts to update a UI element in the store. It returns an error if
@@ -77,9 +76,4 @@ func (s *elementStore) Update(v UI) error {
 
 	s.elements[descriptor.ID] = v
 	return nil
-}
-
-// Dismount removes a UI element from the store.
-func (s *elementStore) Dismount(v UI) {
-	delete(s.elements, v.descriptor().ID)
 }

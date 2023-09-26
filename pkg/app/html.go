@@ -23,6 +23,8 @@ type htmlElement struct {
 	dispatcher    Dispatcher
 	jsElement     Value
 	this          UI
+
+	elementDescriptor elementDescriptor
 }
 
 func (e *htmlElement) Kind() Kind {
@@ -396,5 +398,5 @@ func (e *htmlElement) writeHTMLAttribute(w io.Writer, k, v string) {
 }
 
 func (e *htmlElement) descriptor() elementDescriptor {
-	return elementDescriptor{}
+	return e.elementDescriptor
 }
