@@ -151,6 +151,9 @@ func (r *raw) descriptor() elementDescriptor {
 	return elementDescriptor{}
 }
 
+func (r *raw) setDescriptor(v elementDescriptor) {
+}
+
 func rawRootTagName(raw string) string {
 	raw = strings.TrimSpace(raw)
 

@@ -1,6 +1,8 @@
 package app
 
 import (
+	"reflect"
+
 	"github.com/maxence-charriere/go-app/v9/pkg/errors"
 )
 
@@ -31,6 +33,12 @@ func (s *elementStore) Mount(v UI) error {
 		return errors.New("descriptor id or depth is not set").
 			WithTag("id", descriptor.ID).
 			WithTag("depth", descriptor.Depth)
+	}
+	if _, isComponent := v.(Composer); !isComponent && descriptor.JSValue() == nil {
+		return errors.New("non component element js value is missing").
+			WithTag("id", descriptor.ID).
+			WithTag("depth", descriptor.Depth).
+			WithTag("type", reflect.TypeOf(v))
 	}
 	if _, ok := s.elements[descriptor.ID]; ok {
 		return errors.New("ui element is already mounted").

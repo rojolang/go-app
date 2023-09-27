@@ -129,3 +129,6 @@ func (t *text) htmlWithIndent(w io.Writer, indent int) {
 func (t *text) descriptor() elementDescriptor {
 	return elementDescriptor{}
 }
+
+func (t *text) setDescriptor(v elementDescriptor) {
+}

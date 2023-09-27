@@ -169,3 +169,6 @@ func (r rangeLoop) htmlWithIndent(w io.Writer, indent int) {
 func (r rangeLoop) descriptor() elementDescriptor {
 	return elementDescriptor{}
 }
+
+func (r rangeLoop) setDescriptor(v elementDescriptor) {
+}

@@ -12,8 +12,9 @@ func TestElementStoreMount(t *testing.T) {
 		err := s.Mount(&htmlDiv{
 			htmlElement: htmlElement{
 				elementDescriptor: elementDescriptor{
-					ID:    1,
-					Depth: 1,
+					ID:        1,
+					Depth:     1,
+					JSElement: value{},
 				},
 			},
 		})
@@ -26,7 +27,8 @@ func TestElementStoreMount(t *testing.T) {
 		err := s.Mount(&htmlDiv{
 			htmlElement: htmlElement{
 				elementDescriptor: elementDescriptor{
-					Depth: 1,
+					Depth:     1,
+					JSElement: value{},
 				},
 			},
 		})
@@ -38,11 +40,26 @@ func TestElementStoreMount(t *testing.T) {
 		err := s.Mount(&htmlDiv{
 			htmlElement: htmlElement{
 				elementDescriptor: elementDescriptor{
-					ID: 1,
+					ID:        1,
+					JSElement: value{},
 				},
 			},
 		})
 		require.Error(t, err)
+	})
+
+	t.Run("mounting an non component element without a js value returns an error", func(t *testing.T) {
+		var s elementStore
+		err := s.Mount(&htmlDiv{
+			htmlElement: htmlElement{
+				elementDescriptor: elementDescriptor{
+					ID:    1,
+					Depth: 1,
+				},
+			},
+		})
+		require.Error(t, err)
+
 	})
 
 	t.Run("mounting an element already mounted returns an error", func(t *testing.T) {
@@ -51,8 +68,9 @@ func TestElementStoreMount(t *testing.T) {
 		div := &htmlDiv{
 			htmlElement: htmlElement{
 				elementDescriptor: elementDescriptor{
-					ID:    1,
-					Depth: 1,
+					ID:        1,
+					Depth:     1,
+					JSElement: value{},
 				},
 			},
 		}
@@ -71,8 +89,9 @@ func TestElementStoreMounted(t *testing.T) {
 		div := &htmlDiv{
 			htmlElement: htmlElement{
 				elementDescriptor: elementDescriptor{
-					ID:    1,
-					Depth: 1,
+					ID:        1,
+					Depth:     1,
+					JSElement: value{},
 				},
 			},
 		}
@@ -88,8 +107,9 @@ func TestElementStoreMounted(t *testing.T) {
 		div := &htmlDiv{
 			htmlElement: htmlElement{
 				elementDescriptor: elementDescriptor{
-					ID:    1,
-					Depth: 1,
+					ID:        1,
+					Depth:     1,
+					JSElement: value{},
 				},
 			},
 		}
@@ -104,8 +124,9 @@ func BenchmarkElementStoreMounted(b *testing.B) {
 	div := &htmlDiv{
 		htmlElement: htmlElement{
 			elementDescriptor: elementDescriptor{
-				ID:    1,
-				Depth: 1,
+				ID:        1,
+				Depth:     1,
+				JSElement: value{},
 			},
 		},
 	}
@@ -124,8 +145,9 @@ func TestElementStoreDismount(t *testing.T) {
 		div := &htmlDiv{
 			htmlElement: htmlElement{
 				elementDescriptor: elementDescriptor{
-					ID:    1,
-					Depth: 1,
+					ID:        1,
+					Depth:     1,
+					JSElement: value{},
 				},
 			},
 		}
@@ -145,8 +167,9 @@ func BenchmarkElementStoreMountDismount(b *testing.B) {
 	div := &htmlDiv{
 		htmlElement: htmlElement{
 			elementDescriptor: elementDescriptor{
-				ID:    1,
-				Depth: 1,
+				ID:        1,
+				Depth:     1,
+				JSElement: value{},
 			},
 		},
 	}
@@ -164,8 +187,9 @@ func TestElementStoreUpdate(t *testing.T) {
 		a := htmlDiv{
 			htmlElement: htmlElement{
 				elementDescriptor: elementDescriptor{
-					ID:    1,
-					Depth: 1,
+					ID:        1,
+					Depth:     1,
+					JSElement: value{},
 				},
 			},
 		}
@@ -184,8 +208,9 @@ func TestElementStoreUpdate(t *testing.T) {
 		a := htmlDiv{
 			htmlElement: htmlElement{
 				elementDescriptor: elementDescriptor{
-					ID:    1,
-					Depth: 1,
+					ID:        1,
+					Depth:     1,
+					JSElement: value{},
 				},
 			},
 		}
@@ -200,8 +225,9 @@ func TestElementStoreUpdate(t *testing.T) {
 		a := htmlDiv{
 			htmlElement: htmlElement{
 				elementDescriptor: elementDescriptor{
-					ID:    1,
-					Depth: 1,
+					ID:        1,
+					Depth:     1,
+					JSElement: value{},
 				},
 			},
 		}
@@ -222,8 +248,9 @@ func BenchmarkElementStoreUpdate(b *testing.B) {
 	a := htmlDiv{
 		htmlElement: htmlElement{
 			elementDescriptor: elementDescriptor{
-				ID:    1,
-				Depth: 1,
+				ID:        1,
+				Depth:     1,
+				JSElement: value{},
 			},
 		},
 	}

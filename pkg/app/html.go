@@ -400,3 +400,7 @@ func (e *htmlElement) writeHTMLAttribute(w io.Writer, k, v string) {
 func (e *htmlElement) descriptor() elementDescriptor {
 	return e.elementDescriptor
 }
+
+func (e *htmlElement) setDescriptor(v elementDescriptor) {
+	e.elementDescriptor = v
+}

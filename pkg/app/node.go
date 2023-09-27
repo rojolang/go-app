@@ -38,6 +38,7 @@ type UI interface {
 	htmlWithIndent(w io.Writer, indent int)
 
 	descriptor() elementDescriptor
+	setDescriptor(elementDescriptor)
 }
 
 // Kind represents the specific kind of a user interface element.

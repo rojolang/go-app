@@ -501,3 +501,6 @@ func (c *Compo) htmlWithIndent(w io.Writer, indent int) {
 func (c *Compo) descriptor() elementDescriptor {
 	return elementDescriptor{}
 }
+
+func (c *Compo) setDescriptor(v elementDescriptor) {
+}

@@ -170,3 +170,6 @@ func (c condition) htmlWithIndent(w io.Writer, indent int) {
 func (c condition) descriptor() elementDescriptor {
 	return elementDescriptor{}
 }
+
+func (c condition) setDescriptor(v elementDescriptor) {
+}
